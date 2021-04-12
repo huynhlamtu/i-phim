@@ -1,0 +1,97 @@
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  font-weight: 550;
+  font-size: 1.125rem;
+  flex-wrap: wrap;
+  width: 40%;
+}
+
+.page-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.page-items {
+  width: 1.175rem;
+  height: 1.375rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 1.125rem;
+  line-height: 1.325rem;
+  margin: 0 5px;
+  border: 1px solid rgb(43, 163, 43);
+  border-radius: 10px;
+  transition: color 100ms linear;
+}
+
+.current-page {
+  width: 1.175rem;
+  height: 1.375rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 1.125rem;
+  line-height: 1.325rem;
+  margin: 0 5px;
+  border: 1px solid rgb(43, 163, 43);
+  border-radius: 10px;
+  background-color: rgb(43, 163, 43);
+  color: white;
+}
+
+.current-page:hover {
+  cursor: pointer;
+}
+
+.page-items:hover {
+  cursor: pointer;
+  color: rgb(43, 163, 43);
+}
+
+.btn-container {
+  display: flex;
+}
+
+.btn-container .btn:first-child {
+  margin-right: 1.5rem;
+}
+
+.btn:hover {
+  background-color: darkgray;
+}
+
+.btn {
+  font-weight: 500;
+  font-size: 1.125rem;
+  width: 5rem;
+  border: none;
+  border-radius: 0.2rem;
+  background-color: rgb(214, 214, 214);
+  outline: none;
+}
+
+.btn:hover {
+  cursor: pointer;
+}
+
+.disable {
+  opacity: 0.5;
+}
+
+.disable:hover {
+  background-color: rgb(214, 214, 214) !important;
+  cursor: initial;
+}
+
+@media screen and (max-width: 1000px) {
+  .pagination {
+    justify-content: center;
+  }
+
+  .btn-container {
+    margin-top: 2rem !important;
+  }
+
+  .btn {
+    padding: 0.5rem 1rem;
+  }
+}
