@@ -1,0 +1,32 @@
+.actors {
+  position: relative;
+}
+
+.actors h4 {
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  color: #ff9800;
+}
+
+.actors ul {
+  margin: 0.5rem 0 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.actors ul li {
+  list-style: none;
+  width: 70px;
+  height: 65px;
+  background: #fff;
+  overflow: hidden;
+  border-radius: 50%;
+  border: solid 2px #fff;
+  margin-right: 5px;
+}
+
+.actors ul li img {
+  width: 100%;
+}

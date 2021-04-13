@@ -17,26 +17,44 @@ export default function Pagination({
         ? _.range(totalPage - 4, totalPage + 1)
         : _.range(currentPage - 2, currentPage + 3)
       : _.range(1, 6);
+
   return (
-    <div className="pagination">
-      <div className="page-container">
-        {pageArr.map((pageItem) => (
-          <span
-            className={pageItem === currentPage ? currentPageClass : pageClass}
-            onClick={pageItem !== currentPage ? onPage : ""}
-          >
-            {pageItem}
-          </span>
-        ))}
-      </div>
-      <div className="btn-container">
+    <div className="pagination-container">
+      <div className="pagination">
         <button
           className={currentPage === 1 ? "btn disable" : "btn"}
           onClick={onPrev}
         >
           Prev
         </button>
-
+        <div className="page-container">
+          {currentPage > 10 && (
+            <React.Fragment>
+              <span className={pageClass} onClick={onPage}>
+                1
+              </span>
+              <span className="page-item--separate">...</span>
+            </React.Fragment>
+          )}
+          {pageArr.map((pageItem) => (
+            <span
+              className={
+                pageItem === currentPage ? currentPageClass : pageClass
+              }
+              onClick={pageItem !== currentPage ? onPage : ""}
+            >
+              {pageItem}
+            </span>
+          ))}
+          {currentPage < totalPage - 3 && (
+            <React.Fragment>
+              <span className="page-item--separate">...</span>
+              <span className={pageClass} onClick={onPage}>
+                {totalPage}
+              </span>
+            </React.Fragment>
+          )}
+        </div>
         <button
           className={currentPage === totalPage ? "btn disable" : "btn"}
           onClick={onNext}

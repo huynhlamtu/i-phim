@@ -6,27 +6,45 @@ export default function Movie({ movie }) {
     title,
     poster,
     rental_rate,
-    rental_duration,
+    release_year,
     film_id,
+    length,
     description,
+    rating,
   } = movie;
+
   return (
-    <div className="movie">
-      <img
-        src={
-          poster
-            ? poster
-            : "https://bochickenstore.com/storage/large/ban-tai-khoan-netfli_1604812119.jpg"
-        }
-        alt=""
-      />
-      <div className="movie-info">
-        <h4>{title}</h4>
-        <p>
-          {rental_rate} ({rental_duration})
-        </p>
-        <p>{film_id}</p>
-        <p>{description}</p>
+    <div class="movie">
+      <div class="poster">
+        <img
+          src={
+            poster
+              ? poster
+              : "https://bochickenstore.com/storage/large/ban-tai-khoan-netfli_1604812119.jpg"
+          }
+          alt=""
+        />
+      </div>
+
+      <div class="details">
+        <h2>{title}</h2>
+
+        <div className="tags info-details">
+          <span>${rental_rate}</span>
+          <span>{rating}</span>
+          <span>{length}min</span>
+        </div>
+
+        <div class="info">
+          <h3>{release_year}</h3>
+          <p className="description">{description}</p>
+        </div>
+
+        <div class="tags categories">
+          <span class="animation">Action</span>
+          <span class="aventure">Romantic</span>
+          <span class="aventure">Thriller</span>
+        </div>
       </div>
     </div>
   );
