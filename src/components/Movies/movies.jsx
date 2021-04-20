@@ -5,47 +5,64 @@ import Pagination from "../Pagination/pagination";
 import { MovieContext } from "./../../context/movieContext";
 
 export default function Movies() {
-  const rootMovies = [];
-  // const [totalPage, setTotalPage] = useState(0);
-  const [movies, setMovies] = useContext(MovieContext);
+  const [data, setData] = useContext(MovieContext);
+
+  const { filters, query, movies, isLoaded } = data;
 
   const apiEndPoint = "http://localhost:3030/api/films";
 
-  const [filters, setFilters] = useState({
-    currentPage: 1,
-  });
+  useEffect(() => {
+    const newData = { ...data, movies: null, isLoaded: false };
+    setData(newData);
 
-  useEffect(async () => {
-    const res = await fetch(apiEndPoint + `?page=${filters.currentPage}`);
-    const resMovies = await res.json();
-    setMovies(resMovies);
+    setTimeout(async () => {
+      const currentPage = filters
+        ? filters.currentPage
+          ? filters.currentPage
+          : 1
+        : 1;
+
+      const res = await fetch(apiEndPoint + `?page=${currentPage}`);
+      const movies = await res.json();
+
+      const updatedData = {
+        ...data,
+        movies,
+        isLoaded: true,
+      };
+      setData(updatedData);
+    }, 500);
   }, [filters]);
 
   const onNext = () => {
-    setFilters({
-      ...filters,
-      currentPage: filters.currentPage + 1,
-    });
+    const newFilters = { ...filters, currentPage: filters.currentPage + 1 };
+    const newData = { ...data, filters: newFilters };
+    setData(newData);
   };
 
   const onPrev = () => {
-    setFilters({
-      ...filters,
-      currentPage: filters.currentPage - 1,
-    });
+    const newFilters = { ...filters, currentPage: filters.currentPage - 1 };
+    const newData = { ...data, filters: newFilters };
+    setData(newData);
   };
 
   const onPage = (e) => {
-    setFilters({
-      ...filters,
-      currentPage: +e.target.innerHTML,
-    });
+    const newFilters = { ...filters, currentPage: e.currentTarget.innerHTML };
+    const newData = { ...data, filters: newFilters };
+    setData(newData);
   };
+
+  if (!movies || !movies.data)
+    return (
+      <div className="movies">
+        {isLoaded && query && query.length > 0 && <h3>No movies founds</h3>}
+      </div>
+    );
 
   return (
     <React.Fragment>
       <div className="movies">
-        {movies.data && movies.data.map((movie) => <Movie movie={movie} />)}
+        {movies && movies.data.map((movie) => <Movie movie={movie} />)}
       </div>
       <div>
         <Pagination

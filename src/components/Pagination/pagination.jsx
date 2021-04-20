@@ -12,18 +12,20 @@ export default function Pagination({
   const currentPageClass = "current-page";
   const pageClass = "page-items";
   const pageArr =
-    currentPage > 4
-      ? currentPage > totalPage - 4
-        ? _.range(totalPage - 4, totalPage + 1)
-        : _.range(currentPage - 2, currentPage + 3)
-      : _.range(1, 6);
+    totalPage > 5
+      ? currentPage > 4
+        ? currentPage > totalPage - 4
+          ? _.range(totalPage - 4, totalPage + 1)
+          : _.range(currentPage - 2, currentPage + 3)
+        : _.range(1, 6)
+      : _.range(1, totalPage + 1);
 
   return (
     <div className="pagination-container">
       <div className="pagination">
         <button
           className={currentPage === 1 ? "btn disable" : "btn"}
-          onClick={onPrev}
+          onClick={currentPage !== 1 ? onPrev : null}
         >
           Prev
         </button>
@@ -41,7 +43,7 @@ export default function Pagination({
               className={
                 pageItem === currentPage ? currentPageClass : pageClass
               }
-              onClick={pageItem !== currentPage ? onPage : ""}
+              onClick={pageItem !== currentPage ? onPage : null}
             >
               {pageItem}
             </span>

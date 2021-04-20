@@ -3,10 +3,10 @@ import React, { useState, createContext } from "react";
 export const MovieContext = createContext();
 
 export const MovieProvider = (props) => {
-  const [movies, setMovies] = useState([]);
+  const [data, setData] = useState([]);
 
   return (
-    <MovieContext.Provider value={[movies, setMovies]}>
+    <MovieContext.Provider value={[data, setData]}>
       {props.children}
     </MovieContext.Provider>
   );

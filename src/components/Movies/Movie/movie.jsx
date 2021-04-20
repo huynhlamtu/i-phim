@@ -28,6 +28,7 @@ export default function Movie({ movie }) {
 
       <div class="details">
         <h2>{title}</h2>
+        <h4>{release_year}</h4>
 
         <div className="tags info-details">
           <span>${rental_rate}</span>
@@ -36,7 +37,6 @@ export default function Movie({ movie }) {
         </div>
 
         <div class="info">
-          <h3>{release_year}</h3>
           <p className="description">{description}</p>
         </div>
 

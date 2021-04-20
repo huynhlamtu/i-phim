@@ -1,0 +1,87 @@
+.navbar-wrapper {
+  padding: 0.5rem 2rem;
+  background: #06121e;
+  color: white;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  transition: all 200ms ease-in-out;
+}
+
+a:visited,
+a:focus {
+  text-decoration: none;
+  color: inherit;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  margin: 0 auto;
+  position: sticky;
+  top: 0;
+  left: 0;
+}
+
+.navbar-left {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.home {
+  text-decoration: none;
+  margin-right: 5rem;
+  font-size: 2.5rem;
+  color: rgb(7, 226, 255) !important;
+}
+
+.search {
+  position: relative;
+  background-color: #fff;
+  width: 25rem;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+}
+
+.search-input {
+  margin-right: 5rem;
+  background-color: inherit;
+  width: 23rem;
+  outline: none;
+  border: none;
+  font-size: 1.25rem;
+}
+
+.search-btn {
+  cursor: pointer;
+  outline: none;
+  border: none;
+  position: absolute;
+  right: 0.75rem;
+  top: 0.575rem;
+  font-size: 1.25rem;
+  font-weight: 400;
+  border-radius: 50%;
+  background-color: inherit;
+}
+
+.navbar-nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+.navbar-nav a {
+  text-decoration: none;
+  display: block;
+  color: inherit;
+  padding: 1rem 1.5rem;
+}
+
+.navbar-nav a:hover {
+  background-color: rgba(177, 19, 177, 0.65);
+  transition: background-color 300ms ease-in-out;
+}
